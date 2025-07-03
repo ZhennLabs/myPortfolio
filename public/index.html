@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello! I'm Henokh - Web Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Add or replace animation-related styles in your <style> */
+.section-fade {
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.section-fade.opacity-100 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Existing styles remain unchanged */
+.diagonal-top {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  width: 160px;
+  height: 2px;
+  background: #000;
+  transform: rotate(30deg);
+}
+.diagonal-right {
+  position: absolute;
+  top: 2.5rem;
+  right: 0.5rem;
+  width: 100px;
+  height: 2px;
+  background: #000;
+  transform: rotate(-30deg);
+}
+.gradient-blob {
+  position: absolute;
+  top: 0;
+  left: 33%;
+  width: 280px;
+  height: 180px;
+  background: radial-gradient(circle at 40% 40%, #b3e0fc 0%, #e0c3fc 70%, #fff 100%);
+  opacity: 0.7;
+  filter: blur(32px);
+  z-index: 0;
+}
+.rainbow-blob {
+  position: absolute;
+  top: 1.75rem;
+  left: 51%;
+  width: 180px;
+  height: 140px;
+  background: radial-gradient(ellipse at center, #fff700 0%, #ff4a7a 45%, #00d6ff 80%);
+  opacity: 0.55;
+  filter: blur(32px);
+  z-index: 0;
+}
+.bar-pattern {
+  background: repeating-linear-gradient(
+    90deg, 
+    #111 0px 60px,
+    #222 60px 120px
+  );
+}
+.glow {
+  text-shadow: 0 2px 16px #fff, 0 1px 2px #888;
+}
+.squiggle {
+  width: 32px;
+  height: 32px;
+  background: none;
+  position: absolute;
+  right: 10%;
+  top: 54%;
+  z-index: 20;
+}
+.squiggle svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.arrow {
+  font-size: 0.85rem;
+  font-weight: 400;
+  margin-left: 0.4rem;
+  margin-right: 0.2rem;
+}
+.font-extrabold-custom {
+  font-weight: 800;
+}
+/* Blinking cursor for typewriter effect */
+.typewriter-cursor {
+  display: inline-block;
+  width: 1ch;
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+/* Dropdown menu custom arrow */
+.dropdown-arrow {
+  transition: transform 0.2s;
+}
+.dropdown-open .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .diagonal-top, .diagonal-right {
+    width: 80px;
+  }
+  .gradient-blob, .rainbow-blob {
+    width: 140px;
+    height: 90px;
+    filter: blur(20px);
+  }
+  .gradient-blob {
+    left: 20%;
+  }
+  .rainbow-blob {
+    left: 40%;
+  }
+  .squiggle {
+    width: 24px;
+    height: 24px;
+    top: 60%;
+    right: 5%;
+  }
+  .absolute.left-16.top-8 {
+    left: 8px;
+    top: 4px;
+    width: 80px !important;
+    height: 80px !important;
+    font-size: 1rem !important;
+  }
+}
+@media (max-width: 640px) {
+  .diagonal-top, .diagonal-right {
+    display: none;
+  }
+  .gradient-blob, .rainbow-blob {
+    width: 100px;
+    height: 60px;
+  }
+  .squiggle {
+    display: none;
+  }
+}
+
+/* Experience Card Styles */
+.experience-card {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  border: 1px solid #000;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+.experience-card:hover {
+  background-color: #000;
+  color: #fff;
+}
+.experience-card .number {
+  width: 3rem;
+  height: 3rem;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.experience-card:hover .number {
+  background-color: #fff;
+  color: #000;
+}
+.experience-card h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.experience-card p {
+  font-size: 0.875rem;
+  color: #666;
+}
+.experience-card a {
+  font-size: 0.875rem;
+  color: #000;
+}
+.experience-card:hover a {
+  color: #fff;
+}
+@media (min-width: 768px) {
+  .experience-card {
+    padding: 2rem;
+  }
+  .experience-card .number {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.75rem;
+  }
+  .experience-card h3 {
+    font-size: 1.5rem;
+  }
+  .experience-card p {
+    font-size: 1rem;
+  }
+  .experience-card a {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 1024px) {
+  .experience-card {
+    padding: 1.5rem 2rem;
+  }
+  .experience-card .w-24 {
+    width: 8rem;
+  }
+  .experience-card .text-lg {
+    font-size: 1.5rem;
+  }
+  .experience-card .text-xs {
+    font-size: 0.75rem;
+  }
+  .experience-card .pr-6 {
+    padding-right: 1.5rem;
+  }
+}
+
+/* Dropdown Container Styles */
+#dropdown-container {
+  width: 100%;
+}
+#dropdownButton {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+#dropdownMenu {
+  width: 90% !important;
+  left: 5% !important;
+  transform: none !important;
+}
+@media (min-width: 768px) {
+  #dropdownButton {
+    width: auto;
+    display: none;
+  }
+  #dropdownMenu {
+    display: flex !important;
+    position: static;
+    width: auto !important;
+    transform: none !important;
+    left: auto !important;
+    margin-top: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+  }
+  #dropdownMenu .flex-col {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+  #dropdownMenu .mb-4 {
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 1024px) {
+  #dropdownMenu .sm:gap-6 {
+    gap: 2rem;
+  }
+}
+  </style>
+</head>
+<body class="relative overflow-x-hidden min-h-screen bg-white font-sans">
+  <div class="h-screen overflow-y-scroll">
+    <!-- Hero Section -->
+    <section class="section-fade opacity-0" data-delay="0">
+      <div class="relative z-10 max-w-screen-xl mx-auto pt-7 pb-10 px-4 sm:px-6 lg:px-8">
+        <div class="diagonal-top"></div>
+        <div class="diagonal-right"></div>
+        <div class="absolute right-8 sm:right-16 md:right-24 top-16 sm:top-24 md:top-16">
+          <svg width="40" height="40" viewBox="0 0 52 52" class="opacity-70">
+            <g stroke="#111" stroke-width="2" fill="none">
+              <line x1="6" y1="6" x2="46" y2="46"/>
+              <line x1="12" y1="6" x2="46" y2="40"/>
+              <line x1="18" y1="6" x2="46" y2="34"/>
+              <line x1="6" y1="12" x2="40" y2="46"/>
+              <line x1="6" y1="18" x2="34" y2="46"/>
+            </g>
+          </svg>
+        </div>
+        <div class="flex flex-col items-center justify-center gap-4 w-full px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center">
+            <span class="text-black font-semibold text-xl">it’s me</span>
+          </div>
+          <div id="dropdown-container" class="relative w-full">
+            <button id="dropdownButton" class="flex items-center justify-center w-full sm:w-auto text-sm font-medium text-black px-4 py-2 border border-black rounded-lg hover:bg-gray-100 transition md:hidden">
+              Menu
+              <svg class="w-4 h-4 ml-1 dropdown-arrow" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20">
+                <path d="M7 10l5 5 5-5"></path>
+              </svg>
+            </button>
+            <div id="dropdownMenu" class="hidden absolute items-center justify-center mt-2 w-full bg-white border border-black rounded-lg shadow-lg p-4 z-20 sm:static sm:w-auto sm:flex sm:items-center sm:border-none sm:shadow-none sm:p-0 sm:mt-0 md:flex-row md:gap-6 lg:gap-8">
+              <div class="flex flex-col items-center sm:items-start mb-4 sm:mb-0 sm:flex-row sm:gap-6 w-full sm:w-auto">
+                <div class="flex flex-col items-center sm:items-start mb-4 sm:mb-0 text-center sm:text-left">
+                  <span class="block text-yellow-500 font-semibold text-[13px]">My Projects</span>
+                  <span class="block text-black/70 text-xs">Explore a collection of my favorite works<br>crafted with passion and precision.</span>
+                </div>
+                <div class="flex flex-col items-center sm:items-start mb-4 sm:mb-0 text-center sm:text-left">
+                  <span class="block text-black font-semibold text-[13px]">About Me</span>
+                  <span class="block text-black/70 text-xs">Get to know me better —<br>my journey, skills, and story.</span>
+                </div>
+                <div class="flex flex-col items-center sm:items-start text-center sm:text-left">
+                  <span class="block text-black font-semibold text-[13px]">Contact Me</span>
+                  <span class="block text-black/70 text-xs">Let's create something great<br>📧 henokhrudolfchr@gmail.com</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Section Content -->
+        <div class="flex flex-col md:flex-row items-center mt-6 relative">
+          <div class="flex-1 z-10">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-xl sm:text-2xl">👋</span>
+              <span class="text-base sm:text-lg font-medium text-black/70">Hello!</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold-custom text-black mb-2 mt-2">
+              I’m <span class="glow">Henokh Rudolf Christofle</span>
+            </h1>
+            <div class="flex items-center mb-2 h-8 sm:h-10">
+              <span id="typewriter-role" class="text-base sm:text-lg tracking-wider font-medium text-black/70"></span>
+              <span class="mx-2 text-lg sm:text-xl">✦</span>
+            </div>
+            <div class="text-black/70 mb-4 text-sm sm:text-[15px] max-w-md">
+              Hello! I’m Henokh Rudolf C. I’m a <span class="font-bold text-black">Web Developer</span>
+            </div>
+            <ul class="text-black/80 text-sm sm:text-[15px] mb-6 space-y-1">
+              <li class="flex items-center">
+                <svg class="w-4 h-4 mr-1 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><path d="M4 8l3 3 5-5"></path></svg>
+                Build fast, responsive, beautiful websites
+              </li>
+              <li class="flex items-center">
+                <svg class="w-4 h-4 mr-1 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><path d="M4 8l3 3 5-5"></path></svg>
+                Modern tech stack: Laravel, React, Tailwind
+              </li>
+              <li class="flex items-center">
+                <svg class="w-4 h-4 mr-1 text-black" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><path d="M4 8l3 3 5-5"></path></svg>
+                Pixel-perfect UI with clean backend logic
+              </li>
+            </ul>
+            <div class="flex gap-4 relative">
+              <button class="border border-black rounded-full px-5 sm:px-7 py-2 text-sm sm:text-base font-medium flex items-center gap-1 hover:bg-gray-100 transition">
+                Download Cv
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20"><path d="M7 10l5 5 5-5"></path></svg>
+              </button>
+            </div>
+          </div>
+          <!-- Right: Image & Graphics -->
+          <div class="flex-1 flex flex-col items-center justify-center relative mt-8 md:mt-0">
+            <img src="../assets/myPhoto2.png" alt="Profile" class="rounded-lg w-[250px] sm:w-[300px] md:w-[350px] h-[350px] sm:h-[400px] md:h-[480px] object-cover object-top shadow-xl border-4 border-white relative z-20" />
+            <span class="squiggle">
+              <svg viewBox="0 0 32 32">
+                <path d="M2,16 C8,32 24,0 30,16" stroke="#111" stroke-width="2.5" fill="none"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section-fade opacity-0" data-delay="200">
+      <div class="w-full bg-white py-12 sm:py-20 px-4 sm:px-6 lg:px-8 font-sans">
+        <div class="flex flex-col sm:flex-row justify-between items-center max-w-6xl mx-auto gap-4">
+          <div class="flex flex-wrap items-center gap-4 sm:gap-6 w-full justify-center sm:justify-start">
+            <span class="h-px w-12 sm:w-16 bg-black"></span>
+            <a href="https://github.com/ZhennLabs" class="flex items-center gap-1 text-xs font-medium text-black hover:underline">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.011-1.04-.017-2.04-3.338.726-4.042-1.415-4.042-1.415-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.084-.729.084-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.606-2.665-.304-5.466-1.334-5.466-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.119 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.805 5.625-5.476 5.921.43.372.814 1.103.814 2.222 0 1.606-.014 2.898-.014 3.293 0 .319.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+              GITHUB
+            </a>
+            <a href="https://www.linkedin.com/in/henokh-rudolf-christofle-9643b0322/" class="flex items-center gap-1 text-xs font-medium text-black hover:underline">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.28c-.97 0-1.75-.78-1.75-1.75s.78-1.75 1.75-1.75 1.75.78 1.75 1.75-.78 1.75-1.75 1.75zm13.5 11.28h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.89v1.36h.04c.4-.75 1.38-1.54 2.83-1.54 3.03 0 3.59 1.99 3.59 4.57v5.61z"/></svg>
+              LINKEDIN
+            </a>
+            <a href="https://www.instagram.com/henokhrdlfx/" class="flex items-center gap-1 text-xs font-medium text-black hover:underline">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.849.07 1.366.062 2.633.314 3.608 1.289.975.975 1.227 2.243 1.289 3.608.058 1.265.069 1.645.069 4.849s-.011 3.584-.069 4.849c-.062 1.366-.314 2.633-1.289 3.608-.975.975-2.243 1.227-3.608 1.289-1.265.058-1.645.069-4.849.069s-3.584-.011-4.849-.069c-1.366-.062-2.633-.314-3.608-1.289-.975-.975-1.227-2.243-1.289-3.608C2.175 15.646 2.163 15.266 2.163 12s.012-3.584.07-4.849c.062-1.366.314-2.633 1.289-3.608.975-.975 2.243-1.227 3.608-1.289C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.777.13 4.602.355 3.635 1.322 2.668 2.289 2.443 3.464 2.385 4.739.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.058 1.275.283 2.45 1.25 3.417.967.967 2.142 1.192 3.417 1.25C8.332 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 1.275-.058 2.45-.283 3.417-1.25.967-.967 1.192-2.142 1.25-3.417.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.058-1.275-.283-2.45-1.25-3.417C19.398.355 18.223.13 16.948.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+              INSTAGRAM
+            </a>
+            <span class="h-px w-12 sm:w-16 bg-black"></span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z" fill="none"/><path d="M22 6l-10 7L2 6"/></svg>
+            <a href="mailto:henokhrudolfchr@gmail.com">
+              <span class="text-xs font-semibold tracking-wide text-black">HENOKHRUDOLFCHR@GMAIL.COM</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto mt-10 flex flex-col md:flex-row gap-6 sm:gap-8">
+          <div class="flex flex-col md:w-[260px]">
+            <div class="text-xs font-bold tracking-widest mb-2 flex items-center gap-2">
+              <span class="block w-6 h-0.5 bg-black"></span>
+              MY SERVICES ?
+            </div>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold leading-[1.1]">WHAT I’M<br>OFFERING</h2>
+            <div class="flex flex-col items-center mt-6 md:mt-24 relative">
+              <div class="absolute left-1/2 -translate-x-1/2 flex flex-col items-center">
+                <span class="text-xs font-medium tracking-widest rotate-[-90deg] mb-4 text-black/80 hidden md:block">MAIN SERVICES</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex-1 flex flex-col gap-6">
+            <div class="flex flex-col mb-4">
+              <p class="text-xs sm:text-sm text-black/80 max-w-md">
+                Crafting clean, fast, and scalable web solutions — built with modern technologies and attention to detail.
+              </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+              <div onclick="toggleModal('modal-frontend')" class="group flex-1 bg-white text-black border border-black flex flex-col justify-between min-h-[200px] sm:min-h-[230px] p-6 sm:p-8 hover:bg-black transition hover:text-white">
+                <div>
+                  <svg class="w-8 sm:w-10 h-8 sm:h-10 mb-5 text-black group-hover:text-white transition" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L6 12.75 9.75 8.5M14.25 7l3.75 4.25-3.75 4.25" />
+                  </svg>
+                  <div class="font-bold text-base sm:text-lg leading-5 mb-2">WEB<br>FRONTEND</div>
+                </div>
+                <button onclick="toggleModal('modal-frontend')" class="flex items-center text-xs mt-4 group focus:outline-none">
+                  EXPLORE
+                  <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20">
+                    <path d="M7 10h6M13 10l-2-2m2 2l-2 2"></path>
+                  </svg>
+                </button>
+              </div>
+              <div onclick="toggleModal('modal-backend')" class="group flex-1 bg-white text-black border border-black flex flex-col justify-between min-h-[200px] sm:min-h-[230px] p-6 sm:p-8 hover:bg-black transition hover:text-white">
+                <div>
+                  <svg class="w-8 sm:w-10 h-8 sm:h-10 mb-5 text-black group-hover:text-white transition" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16v16H4z" />
+                  </svg>
+                  <div class="font-bold text-base sm:text-lg leading-5 mb-2">WEB<br>BACKEND</div>
+                </div>
+                <button onclick="toggleModal('modal-backend')" class="flex items-center text-xs mt-4 group focus:outline-none">
+                  EXPLORE
+                  <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20">
+                    <path d="M7 10h6M13 10l-2-2m2 2l-2 2"></path>
+                  </svg>
+                </button>
+              </div>
+              <div onclick="toggleModal('modal-fullstack')" class="group flex-1 bg-white text-black border border-black flex flex-col justify-between min-h-[200px] sm:min-h-[230px] p-6 sm:p-8 hover:bg-black transition hover:text-white">
+                <div>
+                  <svg class="w-8 sm:w-10 h-8 sm:h-10 mb-5 text-black group-hover:text-white transition" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.75v14.5m7-7H5" />
+                  </svg>
+                  <div class="font-bold text-base sm:text-lg leading-5 mb-2">WEB<br>FULLSTACK</div>
+                </div>
+                <button onclick="toggleModal('modal-fullstack')" class="flex items-center text-xs mt-4 group focus:outline-none">
+                  EXPLORE
+                  <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20">
+                    <path d="M7 10h6M13 10l-2-2m2 2l-2 2"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section-fade opacity-0" data-delay="400">
+      <div class="w-full py-20 px-4 md:px-6 lg:px-8 font-sans bg-white">
+        <div class="max-w-4xl mx-auto text-center mb-10 relative">
+          <div class="flex justify-center items-center mb-2">
+            <span class="w-6 h-6 bg-[radial-gradient(circle,_#000_2px,_transparent_3px)] rounded-full relative">
+              <span class="absolute left-1/2 top-1/2 w-3 h-3 -translate-x-1/2 -translate-y-1/2"></span>
+            </span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-wide mb-2">EXPERIENCE</h2>
+          <p class="text-xs md:text-sm text-black/80 mt-2 mb-7">
+            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.
+          </p>
+          <div class="absolute right-16 md:right-24 top-16 md:top-20">
+            <svg width="52" height="52" viewBox="0 0 52 52" class="opacity-70">
+              <g stroke="#111" stroke-width="2" fill="none">
+                <line x1="6" y1="6" x2="46" y2="46"/>
+                <line x1="12" y1="6" x2="46" y2="40"/>
+                <line x1="18" y1="6" x2="46" y2="34"/>
+                <line x1="6" y1="12" x2="40" y2="46"/>
+                <line x1="6" y1="18" x2="34" y2="46"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="max-w-4xl mx-auto flex flex-col gap-4">
+          <div class="group flex items-center bg-white text-black hover:bg-black hover:text-white rounded-none border border-black">
+            <div class="flex items-center px-6 py-6 w-24 md:w-32 justify-center">
+              <span class="w-10 h-10 flex items-center justify-center rounded bg-black group-hover:bg-white text-white group-hover:text-black text-2xl font-bold">1</span>
+            </div>
+            <div class="flex-1 py-6">
+              <div class="font-bold text-lg md:text-xl mb-1">Kompas Gramedia</div>
+              <div class="text-xs md:text-sm text-black/80 group-hover:text-white/80">Student Intern - Developing Game Web Based with A-Frame</div>
+            </div>
+            <div class="flex items-center pr-6 py-6 min-w-[180px] justify-end">
+              <span class="uppercase text-xs md:text-sm font-semibold tracking-wide">Job Duration - 1 Year</span>
+            </div>
+          </div>
+          <div class="group flex items-center bg-white text-black hover:bg-black hover:text-white rounded-none border border-black">
+            <div class="flex items-center px-6 py-6 w-24 md:w-32 justify-center">
+              <span class="w-10 h-10 flex items-center justify-center rounded bg-black group-hover:bg-white text-white group-hover:text-black text-2xl font-bold">2</span>
+            </div>
+            <div class="flex-1 py-6">
+              <div class="font-bold text-lg md:text-xl mb-1">GBI Cibubur Raya Developer Team</div>
+              <div class="text-xs md:text-sm text-black/80 group-hover:text-white/80">Web Developer - Developing Attendance Web Application</div>
+              <a href="https://gbicibuburraya.com/siadem_old_design030725/imammusik/login_karyawan.php" target="_blank" class="mt-2 text-black font-bold text-xs md:text-sm hover:underline group-hover:text-white flex items-center gap-1">
+                View Website
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><path d="M4 8l4-4 4 4" /><path d="M8 12V4" /></svg>
+              </a>
+            </div>
+            <div class="flex items-center pr-6 py-6 min-w-[180px] justify-end">
+              <span class="uppercase text-xs md:text-sm font-semibold tracking-wide">Job Duration - Now</span>
+            </div>
+          </div>
+          <div class="group flex items-center bg-white text-black hover:bg-black hover:text-white rounded-none border border-black">
+            <div class="flex items-center px-6 py-6 w-24 md:w-32 justify-center">
+              <span class="w-10 h-10 flex items-center justify-center rounded bg-black group-hover:bg-white text-white group-hover:text-black text-2xl font-bold">3</span>
+            </div>
+            <div class="flex-1 py-6">
+              <div class="font-bold text-lg md:text-xl mb-1">Flow Homme Developer Team</div>
+              <div class="text-xs md:text-sm text-black/80 group-hover:text-white/80">Web Developer - Developing E-Commerce Web Application</div>
+              <a href="#" target="_blank" class="mt-2 text-black font-bold text-xs md:text-sm hover:underline group-hover:text-white flex items-center gap-1">
+                View Website
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><path d="M4 8l4-4 4 4" /><path d="M8 12V4" /></svg>
+              </a>
+            </div>
+            <div class="flex items-center pr-6 py-6 min-w-[180px] justify-end">
+              <span class="uppercase text-xs md:text-sm font-semibold tracking-wide">Job Duration - Now</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="section-fade opacity-0" data-delay="600">
+      <div class="w-full py-12 sm:py-16 px-4 sm:px-6 lg:px-8 font-sans bg-white">
+        <div class="max-w-4xl mx-auto text-center mb-12">
+          <div class="flex justify-center items-center mb-2">
+            <svg class="w-6 sm:w-8 h-6 sm:h-8 text-black" fill="none" viewBox="0 0 32 32">
+              <circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 7v10l7 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-wide mb-2">ACHIEVEMENTS</h2>
+          <p class="text-xs sm:text-sm text-black/80 mt-2 mb-7">
+            A collection of proud moments and recognitions throughout my journey in tech.
+          </p>
+        </div>
+        <div class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div class="bg-white border border-black rounded-xl shadow-md flex flex-col hover:shadow-xl transition overflow-hidden">
+            <img src="../assets/soty.jpg" class="h-[120px] sm:h-[160px] w-full object-cover" />
+            <div class="flex flex-col p-5 sm:p-7 flex-1 justify-between">
+              <div class="flex items-center mb-4">
+                <div>
+                  <div class="font-bold text-sm sm:text-base">Student Of The Year</div>
+                  <div class="text-xs text-black/60">2023</div>
+                </div>
+              </div>
+              <div class="text-xs sm:text-sm text-black/80 mb-4">
+                Best Graduate in Software Engineering for outstanding performance.
+              </div>
+            </div>
+          </div>
+          <div class="bg-white border border-black rounded-xl shadow-md flex flex-col hover:shadow-xl transition overflow-hidden">
+            <img src="../assets/bnsp.jpg" class="h-[120px] sm:h-[160px] w-full object-cover" />
+            <div class="flex flex-col p-5 sm:p-7 flex-1 justify-between">
+              <div class="flex items-center mb-4">
+                <div>
+                  <div class="font-bold text-sm sm:text-base">Certified by BNSP</div>
+                  <div class="text-xs text-black/60">2023</div>
+                </div>
+              </div>
+              <div class="text-xs sm:text-sm text-black/80 mb-4">
+                Nationally certified in Software Engineering by BNSP.
+              </div>
+            </div>
+          </div>
+          <div class="bg-white border border-black rounded-xl shadow-md flex flex-col hover:shadow-xl transition overflow-hidden">
+            <img src="../assets/pkl.jpg" alt="Behance Feature" class="h-[120px] sm:h-[160px] w-full object-cover" />
+            <div class="flex flex-col p-5 sm:p-7 flex-1 justify-between">
+              <div class="flex items-center mb-4">
+                <div>
+                  <div class="font-bold text-sm sm:text-base">Industrial Certificate</div>
+                  <div class="text-xs text-black/60">2022</div>
+                </div>
+              </div>
+              <div class="text-xs sm:text-sm text-black/80 mb-4">
+                Internship at Kompas Gramedia with real-world dev experience.
+              </div>
+            </div>
+          </div>
+          <div class="bg-white border border-black rounded-xl shadow-md flex flex-col hover:shadow-xl transition overflow-hidden">
+            <img src="../assets/webStatic.png" alt="Web Static Competition" class="h-[120px] sm:h-[160px] w-full object-cover" />
+            <div class="flex flex-col p-5 sm:p-7 flex-1 justify-between">
+              <div class="flex items-center mb-4">
+                <div>
+                  <div class="font-bold text-sm sm:text-base">National Competition</div>
+                  <div class="text-xs text-black/60">2024</div>
+                </div>
+              </div>
+              <div class="text-xs sm:text-sm text-black/80 mb-4">
+                1st Place at National Static Web Competition, UBL Jakarta.
+              </div>
+              <div class="flex items-end justify-between">
+                <a href="https://www.figma.com/design/tvgvRGF4VaLBr1QXvboXD3/UMKM?node-id=0-1&t=RthYEprn1CYhV4Y7-1" class="text-xs font-semibold text-black/80">
+                  Prototype
+                </a>
+                <a href="https://zhennlabs.github.io/Web-UMKM/" target="_blank" class="text-black font-bold text-xs hover:underline flex items-center gap-1">
+                  View Website
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><path d="M4 8l4-4 4 4" /><path d="M8 12V4" /></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Client Feedback Section -->
+    <section class="section-fade opacity-0" data-delay="800">
+      <div class="w-full py-12 sm:py-16 px-4 sm:px-6 lg:px-8 font-sans bg-white">
+        <div class="max-w-3xl mx-auto relative">
+          <div class="flex justify-between items-start mb-4">
+            <span class="text-xs font-semibold tracking-widest">CLIENT FEEDBACK</span>
+            <button class="p-2" aria-label="Close">
+              <svg class="w-6 sm:w-7 h-6 sm:h-7 text-black" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <line x1="5" y1="5" x2="19" y2="19"/>
+                <line x1="19" y1="5" x2="5" y2="19"/>
+              </svg>
+            </button>
+          </div>
+          <blockquote class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-black leading-snug mb-8 mt-4">
+            “The most valuable thing in your life is when you know you're not perfect, but you keep trying.”
+          </blockquote>
+          <div class="flex flex-col md:flex-row md:items-end items-start gap-6 sm:gap-8">
+            <div class="flex-1 mb-4 md:mb-0">
+              <div class="font-bold text-base sm:text-lg text-black">Henokh Rudolf C-</div>
+              <div class="text-xs sm:text-sm text-black/70 mb-3">Freelancer</div>
+              <svg class="w-20 sm:w-24 h-3" viewBox="0 0 96 8" fill="none">
+                <path d="M2 6C10 2 14 6 22 6C30 6 34 2 42 6C50 10 54 6 62 6C70 6 74 2 82 6C90 10 94 6 94 6" stroke="#111" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="flex-shrink-0 relative h-36 sm:h-44 w-36 sm:w-44 flex items-center justify-center mx-auto md:mx-0">
+              <div class="absolute inset-0">
+                <svg class="w-full h-full" viewBox="0 0 180 180" fill="none">
+                  <polygon points="90,10 123,39 171,60 143,103 147,157 90,142 33,157 37,103 9,60 57,39" fill="#ececec" />
+                </svg>
+              </div>
+              <img src="../assets/myPhoto.png" alt="Client Photo" class="absolute inset-0 m-auto rounded-none w-[160px] sm:w-[200px] h-[160px] sm:h-[200px] object-cover object-top" style="clip-path: polygon(50% 0%, 85% 22%, 98% 62%, 75% 100%, 25% 100%, 2% 62%, 15% 22%);"/>
+            </div>
+          </div>
+          <div class="absolute left-0 bottom-3">
+            <svg class="w-10 sm:w-12 h-3" viewBox="0 0 48 8" fill="none">
+              <path d="M2 6C6 2 10 6 14 6C18 6 22 2 26 6C30 10 34 6 38 6C42 6 46 2 46 6" stroke="#111" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="fixed bottom-0 left-0 w-full z-30 bg-black">
+    <div class="flex justify-center items-center gap-2 py-2 flex-wrap">
+      <span class="text-white text-xs font-semibold px-3 sm:px-4 py-1 tracking-wider border-r border-white/40">WEB DEV</span>
+      <span class="text-white text-xs font-semibold px-3 sm:px-4 py-1 tracking-wider border-r border-white/40">WEB DESIGN</span>
+      <span class="text-white text-xs font-semibold px-3 sm:px-4 py-1 tracking-wider border-r border-white/40">DEVELOPMENT</span>
+      <span class="text-white text-xs font-semibold px-3 sm:px-4 py-1 tracking-wider">WEB FLOW</span>
+    </div>
+  </div>
+
+  <script>
+    const roles = ["Fullstack Developer", "Web Developer", "UI/UX"];
+    const typeEl = document.getElementById("typewriter-role");
+    let roleIdx = 0, charIdx = 0, isDeleting = false;
+
+    function typeRole() {
+      const current = roles[roleIdx];
+      if (!isDeleting) {
+        typeEl.innerHTML = current.slice(0, charIdx) + '<span class="typewriter-cursor">|</span>';
+        if (charIdx < current.length) {
+          charIdx++;
+          setTimeout(typeRole, 70);
+        } else {
+          isDeleting = true;
+          setTimeout(typeRole, 1200);
+        }
+      } else {
+        typeEl.innerHTML = current.slice(0, charIdx) + '<span class="typewriter-cursor">|</span>';
+        if (charIdx > 0) {
+          charIdx--;
+          setTimeout(typeRole, 40);
+        } else {
+          isDeleting = false;
+          roleIdx = (roleIdx + 1) % roles.length;
+          setTimeout(typeRole, 500);
+        }
+      }
+    }
+    typeRole();
+
+    const dropdownBtn = document.getElementById('dropdownButton');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const dropdownContainer = document.getElementById('dropdownContainer');
+
+    dropdownBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      dropdownMenu.classList.toggle('hidden');
+      dropdownContainer.classList.toggle('dropdown-open');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!dropdownContainer.contains(e.target)) {
+        dropdownMenu.classList.add('hidden');
+        dropdownContainer.classList.remove('dropdown-open');
+      }
+    });
+
+    function toggleModal(id) {
+      const modal = document.getElementById(id);
+      modal.classList.toggle('hidden');
+      modal.classList.toggle('flex');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.section-fade');
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const delay = parseInt(entry.target.getAttribute('data-delay')) || 0;
+            setTimeout(() => {
+              entry.target.classList.add('opacity-100', 'translate-y-0');
+            }, delay);
+            observer.unobserve(entry.target); 
+          }
+        });
+      }, {
+        threshold: 0.1 
+      });
+
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
+</body>
+</html>
