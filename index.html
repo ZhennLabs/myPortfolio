@@ -6,279 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Add or replace animation-related styles in your <style> */
-.section-fade {
-  transform: translateY(50px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.section-fade.opacity-100 {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Existing styles remain unchanged */
-.diagonal-top {
-  position: absolute;
-  top: 0.5rem;
-  left: 0.5rem;
-  width: 160px;
-  height: 2px;
-  background: #000;
-  transform: rotate(30deg);
-}
-.diagonal-right {
-  position: absolute;
-  top: 2.5rem;
-  right: 0.5rem;
-  width: 100px;
-  height: 2px;
-  background: #000;
-  transform: rotate(-30deg);
-}
-.gradient-blob {
-  position: absolute;
-  top: 0;
-  left: 33%;
-  width: 280px;
-  height: 180px;
-  background: radial-gradient(circle at 40% 40%, #b3e0fc 0%, #e0c3fc 70%, #fff 100%);
-  opacity: 0.7;
-  filter: blur(32px);
-  z-index: 0;
-}
-.rainbow-blob {
-  position: absolute;
-  top: 1.75rem;
-  left: 51%;
-  width: 180px;
-  height: 140px;
-  background: radial-gradient(ellipse at center, #fff700 0%, #ff4a7a 45%, #00d6ff 80%);
-  opacity: 0.55;
-  filter: blur(32px);
-  z-index: 0;
-}
-.bar-pattern {
-  background: repeating-linear-gradient(
-    90deg, 
-    #111 0px 60px,
-    #222 60px 120px
-  );
-}
-.glow {
-  text-shadow: 0 2px 16px #fff, 0 1px 2px #888;
-}
-.squiggle {
-  width: 32px;
-  height: 32px;
-  background: none;
-  position: absolute;
-  right: 10%;
-  top: 54%;
-  z-index: 20;
-}
-.squiggle svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.arrow {
-  font-size: 0.85rem;
-  font-weight: 400;
-  margin-left: 0.4rem;
-  margin-right: 0.2rem;
-}
-.font-extrabold-custom {
-  font-weight: 800;
-}
-/* Blinking cursor for typewriter effect */
-.typewriter-cursor {
-  display: inline-block;
-  width: 1ch;
-  animation: blink 1s steps(1) infinite;
-}
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-/* Dropdown menu custom arrow */
-.dropdown-arrow {
-  transition: transform 0.2s;
-}
-.dropdown-open .dropdown-arrow {
-  transform: rotate(180deg);
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .diagonal-top, .diagonal-right {
-    width: 80px;
-  }
-  .gradient-blob, .rainbow-blob {
-    width: 140px;
-    height: 90px;
-    filter: blur(20px);
-  }
-  .gradient-blob {
-    left: 20%;
-  }
-  .rainbow-blob {
-    left: 40%;
-  }
-  .squiggle {
-    width: 24px;
-    height: 24px;
-    top: 60%;
-    right: 5%;
-  }
-  .absolute.left-16.top-8 {
-    left: 8px;
-    top: 4px;
-    width: 80px !important;
-    height: 80px !important;
-    font-size: 1rem !important;
-  }
-}
-@media (max-width: 640px) {
-  .diagonal-top, .diagonal-right {
-    display: none;
-  }
-  .gradient-blob, .rainbow-blob {
-    width: 100px;
-    height: 60px;
-  }
-  .squiggle {
-    display: none;
-  }
-}
-
-/* Experience Card Styles */
-.experience-card {
-  display: flex;
-  align-items: center;
-  padding: 1.5rem;
-  border: 1px solid #000;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
-}
-.experience-card:hover {
-  background-color: #000;
-  color: #fff;
-}
-.experience-card .number {
-  width: 3rem;
-  height: 3rem;
-  background-color: #000;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.25rem;
-  font-size: 1.5rem;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-.experience-card:hover .number {
-  background-color: #fff;
-  color: #000;
-}
-.experience-card h3 {
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-.experience-card p {
-  font-size: 0.875rem;
-  color: #666;
-}
-.experience-card a {
-  font-size: 0.875rem;
-  color: #000;
-}
-.experience-card:hover a {
-  color: #fff;
-}
-@media (min-width: 768px) {
-  .experience-card {
-    padding: 2rem;
-  }
-  .experience-card .number {
-    width: 3.5rem;
-    height: 3.5rem;
-    font-size: 1.75rem;
-  }
-  .experience-card h3 {
-    font-size: 1.5rem;
-  }
-  .experience-card p {
-    font-size: 1rem;
-  }
-  .experience-card a {
-    font-size: 1rem;
-  }
-}
-@media (min-width: 1024px) {
-  .experience-card {
-    padding: 1.5rem 2rem;
-  }
-  .experience-card .w-24 {
-    width: 8rem;
-  }
-  .experience-card .text-lg {
-    font-size: 1.5rem;
-  }
-  .experience-card .text-xs {
-    font-size: 0.75rem;
-  }
-  .experience-card .pr-6 {
-    padding-right: 1.5rem;
-  }
-}
-
-/* Dropdown Container Styles */
-#dropdown-container {
-  width: 100%;
-}
-#dropdownButton {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-}
-#dropdownMenu {
-  width: 90% !important;
-  left: 5% !important;
-  transform: none !important;
-}
-@media (min-width: 768px) {
-  #dropdownButton {
-    width: auto;
-    display: none;
-  }
-  #dropdownMenu {
-    display: flex !important;
-    position: static;
-    width: auto !important;
-    transform: none !important;
-    left: auto !important;
-    margin-top: 0;
-    padding: 0;
-    border: none;
-    box-shadow: none;
-  }
-  #dropdownMenu .flex-col {
-    flex-direction: row;
-    gap: 1.5rem;
-  }
-  #dropdownMenu .mb-4 {
-    margin-bottom: 0;
-  }
-}
-@media (min-width: 1024px) {
-  #dropdownMenu .sm:gap-6 {
-    gap: 2rem;
-  }
-}
-  </style>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="custom.css">
 </head>
 <body class="relative overflow-x-hidden min-h-screen bg-white font-sans">
   <div class="h-screen overflow-y-scroll">
@@ -427,42 +156,67 @@
               </p>
             </div>
             <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
-              <div onclick="toggleModal('modal-frontend')" class="group flex-1 bg-white text-black border border-black flex flex-col justify-between min-h-[200px] sm:min-h-[230px] p-6 sm:p-8 hover:bg-black transition hover:text-white">
+              <div class="group flex-1 bg-white text-black border border-black flex flex-col justify-between min-h-[200px] sm:min-h-[230px] p-6 sm:p-8 hover:bg-black transition hover:text-white">
                 <div>
                   <svg class="w-8 sm:w-10 h-8 sm:h-10 mb-5 text-black group-hover:text-white transition" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L6 12.75 9.75 8.5M14.25 7l3.75 4.25-3.75 4.25" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 20v-6h4v6m-4-8V4h4v8M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2"/>
                   </svg>
                   <div class="font-bold text-base sm:text-lg leading-5 mb-2">WEB<br>FRONTEND</div>
                 </div>
-                <button onclick="toggleModal('modal-frontend')" class="flex items-center text-xs mt-4 group focus:outline-none">
+                <button class="flex items-center text-xs mt-4 group focus:outline-none">
                   EXPLORE
                   <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20">
                     <path d="M7 10h6M13 10l-2-2m2 2l-2 2"></path>
                   </svg>
                 </button>
               </div>
-              <div onclick="toggleModal('modal-backend')" class="group flex-1 bg-white text-black border border-black flex flex-col justify-between min-h-[200px] sm:min-h-[230px] p-6 sm:p-8 hover:bg-black transition hover:text-white">
+              <div class="group flex-1 bg-white text-black border border-black flex flex-col justify-between min-h-[200px] sm:min-h-[230px] p-6 sm:p-8 hover:bg-black transition hover:text-white">
                 <div>
                   <svg class="w-8 sm:w-10 h-8 sm:h-10 mb-5 text-black group-hover:text-white transition" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16v16H4z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                    <polyline points="3.27,6.96 12,12.01 20.73,6.96"/>
+                    <line x1="12" y1="22.08" x2="12" y2="12"/>
                   </svg>
                   <div class="font-bold text-base sm:text-lg leading-5 mb-2">WEB<br>BACKEND</div>
                 </div>
-                <button onclick="toggleModal('modal-backend')" class="flex items-center text-xs mt-4 group focus:outline-none">
+                <button class="flex items-center text-xs mt-4 group focus:outline-none">
                   EXPLORE
                   <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20">
                     <path d="M7 10h6M13 10l-2-2m2 2l-2 2"></path>
                   </svg>
                 </button>
               </div>
-              <div onclick="toggleModal('modal-fullstack')" class="group flex-1 bg-white text-black border border-black flex flex-col justify-between min-h-[200px] sm:min-h-[230px] p-6 sm:p-8 hover:bg-black transition hover:text-white">
+              <div class="group flex-1 bg-white text-black border border-black flex flex-col justify-between min-h-[200px] sm:min-h-[230px] p-6 sm:p-8 hover:bg-black transition hover:text-white">
                 <div>
                   <svg class="w-8 sm:w-10 h-8 sm:h-10 mb-5 text-black group-hover:text-white transition" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.75v14.5m7-7H5" />
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                    <circle cx="6" cy="7" r="1"/>
+                    <circle cx="9" cy="7" r="1"/>
+                    <circle cx="12" cy="7" r="1"/>
                   </svg>
                   <div class="font-bold text-base sm:text-lg leading-5 mb-2">WEB<br>FULLSTACK</div>
                 </div>
-                <button onclick="toggleModal('modal-fullstack')" class="flex items-center text-xs mt-4 group focus:outline-none">
+                <button class="flex items-center text-xs mt-4 group focus:outline-none">
+                  EXPLORE
+                  <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20">
+                    <path d="M7 10h6M13 10l-2-2m2 2l-2 2"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="group flex-1 bg-white text-black border border-black flex flex-col justify-between min-h-[200px] sm:min-h-[230px] p-6 sm:p-8 hover:bg-black transition hover:text-white">
+                <div>
+                  <svg class="w-8 sm:w-10 h-8 sm:h-10 mb-5 text-black group-hover:text-white transition" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM7 3H5v12a2 2 0 002 2V3z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 3h4a2 2 0 012 2v12a4 4 0 01-4 4h-4a2 2 0 01-2-2V5a2 2 0 012-2z"/>
+                    <circle cx="16" cy="8" r="1"/>
+                    <circle cx="16" cy="12" r="1"/>
+                    <circle cx="16" cy="16" r="1"/>
+                  </svg>
+                  <div class="font-bold text-base sm:text-lg leading-5 mb-2">UI/UX<br>DESIGN</div>
+                </div>
+                <button class="flex items-center text-xs mt-4 group focus:outline-none">
                   EXPLORE
                   <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 20 20">
                     <path d="M7 10h6M13 10l-2-2m2 2l-2 2"></path>
@@ -570,6 +324,202 @@
               <span class="uppercase text-xs md:text-sm font-semibold tracking-wide">Job Duration - Now</span>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section-fade opacity-0" data-delay="500">
+      <div class="w-full py-12 sm:py-20 px-4 sm:px-6 lg:px-8 font-sans">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-12">
+            <div class="flex justify-center items-center mb-2">
+              <svg class="w-6 sm:w-8 h-6 sm:h-8 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+            </div>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-wide mb-2">FEATURED PROJECTS</h2>
+            <p class="text-xs sm:text-sm text-black/80 mt-2 mb-7 max-w-2xl mx-auto">
+              Showcasing my best work - from concept to completion. Each project represents a unique challenge solved with creativity and technical expertise.
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <!-- Project 1 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-black/10 hover:shadow-xl transition-all duration-300 group">
+              <div class="relative h-48 bg-white overflow-hidden">
+                <img src="assets/dapurHemat.png" alt="Dapur Hemat UMKM Platform" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                <div class="absolute inset-0 group-hover: transition-all duration-300"></div>
+                <div class="absolute top-4 right-4 bg-white border border-black text-black text-xs px-2 py-1 rounded-full font-semibold">
+                  🏆 Winner
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-bold mb-2">UMKM Web Platform</h3>
+                <p class="text-sm text-black/70 mb-4">
+                  A comprehensive web platform for small businesses. Won 1st place at National Static Web Competition.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">HTML</span>
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">CSS</span>
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">JavaScript</span>
+                </div>
+                <div class="flex gap-3">
+                  <a href="https://zhennlabs.github.io/Web-UMKM/" target="_blank" class="flex items-center gap-1 text-xs font-semibold text-black hover:text-blue-600 transition">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><path d="M4 8l4-4 4 4" /><path d="M8 12V4" /></svg>
+                    Live Demo
+                  </a>
+                  <a href="https://www.figma.com/design/tvgvRGF4VaLBr1QXvboXD3/UMKM?node-id=0-1&t=RthYEprn1CYhV4Y7-1" target="_blank" class="flex items-center gap-1 text-xs font-semibold text-black hover:text-purple-600 transition">
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    Design
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-black/10 hover:shadow-xl transition-all duration-300 group">
+              <div class="relative h-48 bg-white overflow-hidden">
+                <img src="assets/attendance.png" alt="Church Attendance System" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                <div class="absolute transition-all duration-300"></div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                </div>
+                <div class="absolute top-4 right-4 bg-white border border-black text-black text-xs px-2 py-1 rounded-full font-semibold">
+                  🔥 Active
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-bold mb-2">Church Attendance System</h3>
+                <p class="text-sm text-black/70 mb-4">
+                  Web-based attendance management system for GBI Cibubur Raya with real-time tracking and reporting.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">PHP</span>
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">MySQL</span>
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">Bootstrap</span>
+                </div>
+                <div class="flex gap-3">
+                  <a href="https://gbicibuburraya.com/siadem_old_design030725/imammusik/login_karyawan.php" target="_blank" class="flex items-center gap-1 text-xs font-semibold text-black hover:text-blue-600 transition">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><path d="M4 8l4-4 4 4" /><path d="M8 12V4" /></svg>
+                    Live Demo
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-black/10 hover:shadow-xl transition-all duration-300 group">
+              <div class="relative h-48 bg-white overflow-hidden">
+                <video src="assets/flowHomme.mp4" autoplay muted loop class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"></video>
+                <div class="absolute transition-all duration-300"></div>
+                <div class="absolute top-4 right-4 bg-white border border-black text-black text-xs px-2 py-1 rounded-full font-semibold">
+                  🚀 In Progress
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-bold mb-2">Flow Homme E-Commerce</h3>
+                <p class="text-sm text-black/70 mb-4">
+                  Modern e-commerce platform with advanced features like inventory management and payment integration.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">Laravel</span>
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">Livewire</span>
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">Tailwind</span>
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">Xendit</span>
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">Google OAuth</span>
+                </div>
+                <div class="flex gap-3">
+                  <span class="text-xs text-black/50">Coming Soon...</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-black/10 hover:shadow-xl transition-all duration-300 group">
+              <div class="relative h-48 bg-white overflow-hidden">
+                <video src="assets/ppdbdss.mp4" autoplay muted loop class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"></video>
+                <div class="absolute transition-all duration-300"></div>
+                <div class="absolute top-4 right-4 bg-white border border-black text-black text-xs px-2 py-1 rounded-full font-semibold">
+                  🧠 DSS
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-bold mb-2">New Student Registration (SMART Method)</h3>
+                <p class="text-sm text-black/70 mb-4">
+                  Decision Support System for new student registration using the SMART method. Enables objective and efficient student selection.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">Laravel</span>
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">Tailwind</span>
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">JavaScript</span>
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">DSS</span>
+                </div>
+                <div class="flex gap-3">
+                  <span class="text-xs text-black/50">Internal Project</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden border border-black/10 hover:shadow-xl transition-all duration-300 group">
+              <div class="relative h-48 bg-white overflow-hidden" 
+                   x-data="{ slide: 0, images: [
+                     'assets/cs-1.png',
+                     'assets/cs-2.png',
+                     'assets/cs-3.png',
+                     'assets/cs-4.png',
+                     'assets/cs-5.png',
+                     'assets/cs-6.png'
+                   ] }"
+                   x-init="setInterval(() => { slide = (slide + 1) % images.length }, 4000)">
+                <template x-for="(img, idx) in images" :key="img">
+                  <img x-show="slide === idx" :src="img" class="absolute inset-0 w-full h-full object-cover transition-all duration-500" x-transition:enter="opacity-0" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="opacity-100" x-transition:leave-end="opacity-0" />
+                </template>
+                <button @click="slide = (slide - 1 + images.length) % images.length" class="carousel-btn prev absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-black w-8 h-8 rounded-full flex items-center justify-center transition z-10 opacity-80">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M15 18l-6-6 6-6"/>
+                  </svg>
+                </button>
+                <button @click="slide = (slide + 1) % images.length" class="carousel-btn next absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-black w-8 h-8 rounded-full flex items-center justify-center transition z-10 opacity-80">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M9 18l6-6-6-6"/>
+                  </svg>
+                </button>
+                <div class="carousel-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                  <template x-for="(img, idx) in images" :key="idx">
+                    <button @click="slide = idx" :class="{'bg-black': slide === idx, 'bg-white/70': slide !== idx}" class="dot w-2 h-2 rounded-full transition"></button>
+                  </template>
+                </div>
+                <div class="absolute top-4 right-4 bg-white border border-black text-black text-xs px-2 py-1 rounded-full font-semibold">
+                  ☕ Coffee Shop
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-lg font-bold mb-2">Kopinya Piyu</h3>
+                <p class="text-sm text-black/70 mb-4">
+                  Full-stack coffee shop web application with admin & user panels, integrated with iPay.mu payment gateway.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">PHP</span>
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">Livewire</span>
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">Tailwind</span>
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">PostgreSQL</span>
+                  <span class="text-xs bg-white border border-black text-black px-2 py-1 rounded">iPay.mu</span>
+                </div>
+                <div class="flex gap-3">
+                  <a href="https://www.figma.com/proto/Z7iSRUIYRRiW5DrxeeJvir/Lima-Lapan-Coffee?type=design&node-id=153-130&t=qh1QAcsGH7b8tAl9-1&scaling=scale-down-width&page-id=0%3A1&starting-point-node-id=153%3A130" target="_blank" class="flex items-center gap-1 text-xs font-semibold text-black hover:text-purple-600 transition">
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    Prototype
+                  </a>
+                  <a href="https://jurnal.tau.ac.id/index.php/siskom-kb/issue/view/50" target="_blank" class="flex items-center gap-1 text-xs font-semibold text-black hover:text-green-600 transition">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><path d="M4 2v12l8-6-8-6z"/></svg>
+                    Journal
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
           <p class="text-md text-center md:text-sm text-black/80 mt-16 mb-7 flex justify-center items-center gap-2">
             See more on my 
             <a href="https://github.com/ZhennLabs" target="_blank" class="flex items-center gap-1 text-black hover:text-gray-700 transition">
@@ -577,7 +527,6 @@
               <span class="underline underline-offset-4">GitHub</span>
             </a>
           </p>
-        </div>
       </div>
     </section>
 
@@ -666,45 +615,11 @@
       </div>
     </section>
 
-    <!-- Client Feedback Section -->
-    <section class="section-fade opacity-0" data-delay="800">
-      <div class="w-full py-12 sm:py-16 px-4 sm:px-6 lg:px-8 font-sans bg-white">
-        <div class="max-w-3xl mx-auto relative">
-          <div class="flex justify-between items-start mb-4">
-            <span class="text-xs font-semibold tracking-widest">CLIENT FEEDBACK</span>
-            <button class="p-2" aria-label="Close">
-              <svg class="w-6 sm:w-7 h-6 sm:h-7 text-black" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                <line x1="5" y1="5" x2="19" y2="19"/>
-                <line x1="19" y1="5" x2="5" y2="19"/>
-              </svg>
-            </button>
-          </div>
-          <blockquote class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-black leading-snug mb-8 mt-4">
-            “The most valuable thing in your life is when you know you're not perfect, but you keep trying.”
-          </blockquote>
-          <div class="flex flex-col md:flex-row md:items-end items-start gap-6 sm:gap-8">
-            <div class="flex-1 mb-4 md:mb-0">
-              <div class="font-bold text-base sm:text-lg text-black">Henokh Rudolf C-</div>
-              <div class="text-xs sm:text-sm text-black/70 mb-3">Freelancer</div>
-              <svg class="w-20 sm:w-24 h-3" viewBox="0 0 96 8" fill="none">
-                <path d="M2 6C10 2 14 6 22 6C30 6 34 2 42 6C50 10 54 6 62 6C70 6 74 2 82 6C90 10 94 6 94 6" stroke="#111" stroke-width="2" stroke-linecap="round" />
-              </svg>
-            </div>
-            <div class="flex-shrink-0 relative h-36 sm:h-44 w-36 sm:w-44 flex items-center justify-center mx-auto md:mx-0">
-              <div class="absolute inset-0">
-                <svg class="w-full h-full" viewBox="0 0 180 180" fill="none">
-                  <polygon points="90,10 123,39 171,60 143,103 147,157 90,142 33,157 37,103 9,60 57,39" fill="#ececec" />
-                </svg>
-              </div>
-              <img src="assets/myPhoto.png" alt="Client Photo" class="absolute inset-0 m-auto rounded-none w-[160px] sm:w-[200px] h-[160px] sm:h-[200px] object-cover object-top" style="clip-path: polygon(50% 0%, 85% 22%, 98% 62%, 75% 100%, 25% 100%, 2% 62%, 15% 22%);"/>
-            </div>
-          </div>
-          <div class="absolute left-0 bottom-3">
-            <svg class="w-10 sm:w-12 h-3" viewBox="0 0 48 8" fill="none">
-              <path d="M2 6C6 2 10 6 14 6C18 6 22 2 26 6C30 10 34 6 38 6C42 6 46 2 46 6" stroke="#111" stroke-width="2" stroke-linecap="round" />
-            </svg>
-          </div>
-        </div>
+    <!-- Personal Statement Section -->
+    <section class="bg-white py-24 px-4 md:px-0">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-2xl font-bold mb-4">Personal Note</h2>
+        <p class="text-lg text-black/80 italic">"I always strive to create digital products that are not only functional, but also meaningful and enjoyable to use. Every project is a journey to learn, grow, and deliver the best for every client and user."</p>
       </div>
     </section>
   </div>
@@ -718,80 +633,6 @@
     </div>
   </div>
 
-  <script>
-    const roles = ["Fullstack Developer", "Web Developer", "UI/UX"];
-    const typeEl = document.getElementById("typewriter-role");
-    let roleIdx = 0, charIdx = 0, isDeleting = false;
-
-    function typeRole() {
-      const current = roles[roleIdx];
-      if (!isDeleting) {
-        typeEl.innerHTML = current.slice(0, charIdx) + '<span class="typewriter-cursor">|</span>';
-        if (charIdx < current.length) {
-          charIdx++;
-          setTimeout(typeRole, 70);
-        } else {
-          isDeleting = true;
-          setTimeout(typeRole, 1200);
-        }
-      } else {
-        typeEl.innerHTML = current.slice(0, charIdx) + '<span class="typewriter-cursor">|</span>';
-        if (charIdx > 0) {
-          charIdx--;
-          setTimeout(typeRole, 40);
-        } else {
-          isDeleting = false;
-          roleIdx = (roleIdx + 1) % roles.length;
-          setTimeout(typeRole, 500);
-        }
-      }
-    }
-    typeRole();
-
-    const dropdownBtn = document.getElementById('dropdownButton');
-    const dropdownMenu = document.getElementById('dropdownMenu');
-    const dropdownContainer = document.getElementById('dropdownContainer');
-
-    dropdownBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      dropdownMenu.classList.toggle('hidden');
-      dropdownContainer.classList.toggle('dropdown-open');
-    });
-
-    document.addEventListener('click', function(e) {
-      if (!dropdownContainer.contains(e.target)) {
-        dropdownMenu.classList.add('hidden');
-        dropdownContainer.classList.remove('dropdown-open');
-      }
-    });
-
-    function toggleModal(id) {
-      const modal = document.getElementById(id);
-      modal.classList.toggle('hidden');
-      modal.classList.toggle('flex');
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const sections = document.querySelectorAll('.section-fade');
-
-      const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const delay = parseInt(entry.target.getAttribute('data-delay')) || 0;
-            setTimeout(() => {
-              entry.target.classList.add('opacity-100', 'translate-y-0');
-            }, delay);
-            observer.unobserve(entry.target); 
-          }
-        });
-      }, {
-        threshold: 0.1 
-      });
-
-      sections.forEach(section => {
-        observer.observe(section);
-      });
-    });
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>

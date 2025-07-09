@@ -1,0 +1,302 @@
+/* Add or replace animation-related styles in your <style> */
+.section-fade {
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.section-fade.opacity-100 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Existing styles remain unchanged */
+.diagonal-top {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  width: 160px;
+  height: 2px;
+  background: #000;
+  transform: rotate(30deg);
+}
+.diagonal-right {
+  position: absolute;
+  top: 2.5rem;
+  right: 0.5rem;
+  width: 100px;
+  height: 2px;
+  background: #000;
+  transform: rotate(-30deg);
+}
+.gradient-blob {
+  position: absolute;
+  top: 0;
+  left: 33%;
+  width: 280px;
+  height: 180px;
+  background: radial-gradient(circle at 40% 40%, #b3e0fc 0%, #e0c3fc 70%, #fff 100%);
+  opacity: 0.7;
+  filter: blur(32px);
+  z-index: 0;
+}
+.rainbow-blob {
+  position: absolute;
+  top: 1.75rem;
+  left: 51%;
+  width: 180px;
+  height: 140px;
+  background: radial-gradient(ellipse at center, #fff700 0%, #ff4a7a 45%, #00d6ff 80%);
+  opacity: 0.55;
+  filter: blur(32px);
+  z-index: 0;
+}
+.bar-pattern {
+  background: repeating-linear-gradient(
+    90deg, 
+    #111 0px 60px,
+    #222 60px 120px
+  );
+}
+.glow {
+  text-shadow: 0 2px 16px #fff, 0 1px 2px #888;
+}
+.squiggle {
+  width: 32px;
+  height: 32px;
+  background: none;
+  position: absolute;
+  right: 10%;
+  top: 54%;
+  z-index: 20;
+}
+.squiggle svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.arrow {
+  font-size: 0.85rem;
+  font-weight: 400;
+  margin-left: 0.4rem;
+  margin-right: 0.2rem;
+}
+.font-extrabold-custom {
+  font-weight: 800;
+}
+/* Blinking cursor for typewriter effect */
+.typewriter-cursor {
+  display: inline-block;
+  width: 1ch;
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+/* Dropdown menu custom arrow */
+.dropdown-arrow {
+  transition: transform 0.2s;
+}
+.dropdown-open .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .diagonal-top, .diagonal-right {
+    width: 80px;
+  }
+  .gradient-blob, .rainbow-blob {
+    width: 140px;
+    height: 90px;
+    filter: blur(20px);
+  }
+  .gradient-blob {
+    left: 20%;
+  }
+  .rainbow-blob {
+    left: 40%;
+  }
+  .squiggle {
+    width: 24px;
+    height: 24px;
+    top: 60%;
+    right: 5%;
+  }
+  .absolute.left-16.top-8 {
+    left: 8px;
+    top: 4px;
+    width: 80px !important;
+    height: 80px !important;
+    font-size: 1rem !important;
+  }
+}
+@media (max-width: 640px) {
+  .diagonal-top, .diagonal-right {
+    display: none;
+  }
+  .gradient-blob, .rainbow-blob {
+    width: 100px;
+    height: 60px;
+  }
+  .squiggle {
+    display: none;
+  }
+}
+
+/* Experience Card Styles */
+.experience-card {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  border: 1px solid #000;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+.experience-card:hover {
+  background-color: #000;
+  color: #fff;
+}
+.experience-card .number {
+  width: 3rem;
+  height: 3rem;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.experience-card:hover .number {
+  background-color: #fff;
+  color: #000;
+}
+.experience-card h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.experience-card p {
+  font-size: 0.875rem;
+  color: #666;
+}
+.experience-card a {
+  font-size: 0.875rem;
+  color: #000;
+}
+.experience-card:hover a {
+  color: #fff;
+}
+@media (min-width: 768px) {
+  .experience-card {
+    padding: 2rem;
+  }
+  .experience-card .number {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.75rem;
+  }
+  .experience-card h3 {
+    font-size: 1.5rem;
+  }
+  .experience-card p {
+    font-size: 1rem;
+  }
+  .experience-card a {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 1024px) {
+  .experience-card {
+    padding: 1.5rem 2rem;
+  }
+  .experience-card .w-24 {
+    width: 8rem;
+  }
+  .experience-card .text-lg {
+    font-size: 1.5rem;
+  }
+  .experience-card .text-xs {
+    font-size: 0.75rem;
+  }
+  .experience-card .pr-6 {
+    padding-right: 1.5rem;
+  }
+}
+
+/* Dropdown Container Styles */
+#dropdown-container {
+  width: 100%;
+}
+#dropdownButton {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+#dropdownMenu {
+  width: 90% !important;
+  left: 5% !important;
+  transform: none !important;
+}
+@media (min-width: 768px) {
+  #dropdownButton {
+    width: auto;
+    display: none;
+  }
+  #dropdownMenu {
+    display: flex !important;
+    position: static;
+    width: auto !important;
+    transform: none !important;
+    left: auto !important;
+    margin-top: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+  }
+  #dropdownMenu .flex-col {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+  #dropdownMenu .mb-4 {
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 1024px) {
+  #dropdownMenu .sm:gap-6 {
+    gap: 2rem;
+  }
+}
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  width: 600%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-track img {
+  width: 16.666%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.dot.active {
+  background-color: white !important;
+}
+
+.carousel-btn {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.group:hover .carousel-btn {
+  opacity: 1;
+}
